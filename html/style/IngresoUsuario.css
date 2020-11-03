@@ -1,0 +1,36 @@
+form{
+	width: 320px;
+	padding: 30px;
+	border: 2px;
+	border-radius: 10px;
+	border-style: groove;
+	border-color: #4CAF50;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#advertenciadatos{
+	display: none;
+	color: red;
+}
+
+#Submit{
+	float: right;
+}
+
+#logo{
+	width: 320px;
+	margin-bottom: 50px;
+}
