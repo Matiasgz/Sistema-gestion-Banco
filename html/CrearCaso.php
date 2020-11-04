@@ -3,7 +3,7 @@ $controlador = "CrearCaso";
 include("../html/plantilla.php") ?>
 
 <div class="container">
-  <form enctype="multipart/form-data" action="../controllers/CrearCaso.php" method="post"  >
+  <form enctype="multipart/form-data" action="../Gestion-Banco/CrearCaso" method="post"  >
 
     <!-- FORMULARIO DATOS DEL CLIENTE-->
 

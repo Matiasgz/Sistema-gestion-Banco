@@ -22,7 +22,7 @@ if(count($_SESSION)==0){
 
         $c = new Casos;
         $c->ResolucionPendiente($_POST["resolucion"], $_POST["numcaso"]);
-         header("Location: ../proyectolaboratorio4/CasosPendientes");
+         header("Location: ../Gestion-Banco/CasosPendientes");
                 exit();
        
                 
@@ -30,7 +30,7 @@ if(count($_SESSION)==0){
     }
     else{
         if($_SESSION['cargo']=="ope"){
-            header("Location: ../proyectolaboratorio4/Inicio");
+            header("Location: ../Gestion-Banco/Inicio");
                 exit();
 
         }

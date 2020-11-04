@@ -77,7 +77,7 @@ if(count($_SESSION)>0) {
 
 
 
-      header("Location: ../proyectolaboratorio4/CasosPendientes");
+      header("Location: ../Gestion-Banco/CasosPendientes");
       exit();
 
       
@@ -106,7 +106,7 @@ if(count($_SESSION)>0) {
      
 }
 else{
-  header("Location: ../proyectolaboratorio4/Inicio.php");
+  header("Location: ../Gestion-Banco/Inicio.php");
 exit();
 }
 ?>

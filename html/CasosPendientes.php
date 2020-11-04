@@ -2,7 +2,7 @@
 $controlador = "CasosPendientes";
 include("../html/plantilla.php") ?>
 
-
+<div class="container">
 <div id="casospendientes">
   <!-- casos pendientes -->
   <table class="table table-hover">
@@ -173,6 +173,7 @@ include("../html/plantilla.php") ?>
     <?php } ?>
 
   </table>
+</div>
 </div>
 
 

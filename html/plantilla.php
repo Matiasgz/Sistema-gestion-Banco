@@ -3,8 +3,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-  <link type="text/css" href="../proyectolaboratorio4/html/style/InicioOperador.css" rel="stylesheet"/>
-  <link type="text/css" href="../proyectolaboratorio4/html/style/navbar.css" rel="stylesheet"/>
+  <link type="text/css" href="../Gestion-Banco/html/style/InicioOperador.css" rel="stylesheet"/>
+  <link type="text/css" href="../Gestion-Banco/html/style/navbar.css" rel="stylesheet"/>
   	<title>Derivados</title>
 
 
@@ -19,79 +19,79 @@
 <div class="topnav mb-3" id="nav"> <!-- NAVBAR NUEVO OPERADOR -->
 
 <?php if($controlador == "Inicio") {?>
-  <a class="active" href="../proyectolaboratorio4/Inicio">Inicio</a>
-  <a href="../proyectolaboratorio4/CrearCaso">Crear caso</a>
-  <a href="../proyectolaboratorio4/BuscarCasos">Buscar casos</a>
+  <a class="active" href="../Gestion-Banco/Inicio">Inicio</a>
+  <a href="../Gestion-Banco/CrearCaso">Crear caso</a>
+  <a href="../Gestion-Banco/BuscarCasos">Buscar casos</a>
     <?php   
     if(count($_SESSION)!=0) {
     if($_SESSION["cargo"] == "int") {   ?>
-        <a href="../proyectolaboratorio4/CasosPendientes">Casos pendientes</a>
-        <a href="../proyectolaboratorio4/AreaDeTrabajo">Area de trabajo</a>
+        <a href="../Gestion-Banco/CasosPendientes">Casos pendientes</a>
+        <a href="../Gestion-Banco/AreaDeTrabajo">Area de trabajo</a>
         
     <?php }} ?>
 
-  <a href="../proyectolaboratorio4/Salir" style="float: right;">Salir</a>
+  <a href="../Gestion-Banco/Salir" style="float: right;">Salir</a>
 <?php } ?>
 
 <?php if($controlador == "BuscarCaso") {?>
-  <a href="../proyectolaboratorio4/Inicio">Inicio</a>
-  <a href="../proyectolaboratorio4/CrearCaso">Crear caso</a>
-  <a class="active" href="../proyectolaboratorio4/BuscarCasos">Buscar casos</a>
+  <a href="../Gestion-Banco/Inicio">Inicio</a>
+  <a href="../Gestion-Banco/CrearCaso">Crear caso</a>
+  <a class="active" href="../Gestion-Banco/BuscarCasos">Buscar casos</a>
     <?php   
     if($_SESSION["cargo"] == "int") {   ?>
-        <a href="../proyectolaboratorio4/CasosPendientes">Casos pendientes</a>
-        <a href="../proyectolaboratorio4/AreaDeTrabajo">Area de trabajo</a>
+        <a href="../Gestion-Banco/CasosPendientes">Casos pendientes</a>
+        <a href="../Gestion-Banco/AreaDeTrabajo">Area de trabajo</a>
         
     <?php } ?>
 
-  <a href="../proyectolaboratorio4/Salir" style="float: right;">Salir</a>
+  <a href="../Gestion-Banco/Salir" style="float: right;">Salir</a>
 <?php } ?>
 
 <?php if($controlador == "CasosPendientes") {?>
-  <a href="../proyectolaboratorio4/Inicio">Inicio</a>
-  <a href="../proyectolaboratorio4/CrearCaso">Crear caso</a>
-  <a href="../proyectolaboratorio4/BuscarCasos">Buscar casos</a>
+  <a href="../Gestion-Banco/Inicio">Inicio</a>
+  <a href="../Gestion-Banco/CrearCaso">Crear caso</a>
+  <a href="../Gestion-Banco/BuscarCasos">Buscar casos</a>
     <?php   
     if($_SESSION["cargo"] == "int") {   ?>
-        <a class="active" href="../proyectolaboratorio4/CasosPendientes">Casos pendientes</a>
-        <a href="../proyectolaboratorio4/AreaDeTrabajo">Area de trabajo</a>
+        <a class="active" href="../Gestion-Banco/CasosPendientes">Casos pendientes</a>
+        <a href="../Gestion-Banco/AreaDeTrabajo">Area de trabajo</a>
         
     <?php } ?>
 
-  <a href="../proyectolaboratorio4/Salir" style="float: right;">Salir</a>
+  <a href="../Gestion-Banco/Salir" style="float: right;">Salir</a>
 <?php } ?>
 
 
 
 
 <?php if($controlador == "CrearCaso") {?>
-  <a href="../proyectolaboratorio4/Inicio">Inicio</a>
-  <a class="active"  href="../proyectolaboratorio4/CrearCaso">Crear caso</a>
-  <a href="../proyectolaboratorio4/BuscarCasos">Buscar casos</a>
+  <a href="../Gestion-Banco/Inicio">Inicio</a>
+  <a class="active"  href="../Gestion-Banco/CrearCaso">Crear caso</a>
+  <a href="../Gestion-Banco/BuscarCasos">Buscar casos</a>
     <?php   
     if(count($_SESSION)!=0) {
     if($_SESSION["cargo"] == "int") {   ?>
-        <a href="../proyectolaboratorio4/CasosPendientes">Casos pendientes</a>
-        <a href="../proyectolaboratorio4/AreaDeTrabajo">Area de trabajo</a>
+        <a href="../Gestion-Banco/CasosPendientes">Casos pendientes</a>
+        <a href="../Gestion-Banco/AreaDeTrabajo">Area de trabajo</a>
         
     <?php } ?>
 
-  <a href="../proyectolaboratorio4/Salir" style="float: right;">Salir</a>
+  <a href="../Gestion-Banco/Salir" style="float: right;">Salir</a>
 <?php }} ?>
 
 
 
 <?php if($controlador == "TodosLosCasos") {?>
-  <a href="../proyectolaboratorio4/Inicio">Inicio</a>
-  <a href="../proyectolaboratorio4/CrearCaso">Crear caso</a>
-  <a href="../proyectolaboratorio4/BuscarCasos">Buscar casos</a>
+  <a href="../Gestion-Banco/Inicio">Inicio</a>
+  <a href="../Gestion-Banco/CrearCaso">Crear caso</a>
+  <a href="../Gestion-Banco/BuscarCasos">Buscar casos</a>
     <?php  if(count($_SESSION)!=0) { 
     if($_SESSION["cargo"] == "int") {   ?>
-        <a href="../proyectolaboratorio4/CasosPendientes">Casos pendientes</a>
-        <a class="active" href="../proyectolaboratorio4/AreaDeTrabajo">Area de trabajo</a>
+        <a href="../Gestion-Banco/CasosPendientes">Casos pendientes</a>
+        <a class="active" href="../Gestion-Banco/AreaDeTrabajo">Area de trabajo</a>
         
     <?php } ?>
 
-  <a href="../proyectolaboratorio4/Salir" style="float: right;">Salir</a>
+  <a href="../Gestion-Banco/Salir" style="float: right;">Salir</a>
 <?php }} ?>
 </div>

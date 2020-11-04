@@ -21,6 +21,6 @@ unset($_SESSION['logueado']);
 unset($_SESSION['cargo']);
 unset($_SESSION['id_usuario']);
 
-header("Location: ../proyectolaboratorio4/Inicio");
+header("Location: ../Gestion-Banco/Inicio");
 exit();
 

@@ -17,7 +17,7 @@ if(count($_SESSION)==0){
     
 }else{
     if($_SESSION['cargo']=="ope"){
-    header("Location: ../proyectolaboratorio4/Inicio.php");
+    header("Location: ../Gestion-Banco/Inicio");
         exit();
 
 }
