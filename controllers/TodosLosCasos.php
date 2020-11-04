@@ -16,6 +16,11 @@ if(count($_SESSION)==0){
 
     
 }else{
+    if($_SESSION['cargo']=="ope"){
+    header("Location: ../proyectolaboratorio4/Inicio.php");
+        exit();
+
+}
 $c = new Casos();
 $todos = $c->TodosLosCasos();
 

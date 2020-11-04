@@ -49,21 +49,29 @@ $controlador = "BuscarCaso";
                   Table.innerHTML = ""; 
               $.ajax({
                     data:  parametros,
-                    url: '../controllers/BuscarCasos.php',
+                    url: '../proyectolaboratorio4/BuscarCasos',
                     type:'post',
                     beforeSend: function () { },
                     success:  function (response) {   
                      //datos = json_decode(response); 
+
+                     
+                     
+                     
                      
                      var datos = $.parseJSON(response);
                      for (var i = 0; i < datos.length; i++){
 
+                           
+                            if(datos[i].estado == 1) $estado = "Finalizado";
+                            else $estado = "Pendiente";
+                            
                             $("#tbody").append('<tr>' + 
-                              '<td align="center" style="dislay: none;">' + datos[i].fecha + '</td>'+
+                              '<td align="center" style="dislay: none;">' + datos[i].fecha  + '</td>'+
                               '<td align="center" style="dislay: none;">' + datos[i].nombre_apellido + '</td>'+
                               '<td align="center" style="dislay: none;">' + datos[i].DNI + '</td>'+
                               '<td align="center" style="dislay: none;">' + datos[i].descripcion + '</td>'+
-                              '<td align="center" style="dislay: none;">' + datos[i].estado + '</td>'+'</tr>');
+                              '<td align="center" style="dislay: none;">' + $estado + '</td>'+'</tr>');
                               }
 
 

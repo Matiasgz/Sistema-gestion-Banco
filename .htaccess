@@ -1,0 +1,10 @@
+# arhivo .htaccess
+
+RewriteEngine on 
+
+RewriteRule ^Inicio$ controllers/ingresousuario.php
+RewriteRule ^Salir$ controllers/CerrarSesion.php
+RewriteRule ^CrearCaso$ controllers/CrearCaso.php
+RewriteRule ^AreaDeTrabajo$ controllers/TodosLosCasos.php
+RewriteRule ^CasosPendientes$ controllers/CasosPendientes.php
+RewriteRule ^BuscarCasos$ controllers/BuscarCasos.php

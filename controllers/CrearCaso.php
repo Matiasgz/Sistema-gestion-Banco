@@ -28,8 +28,8 @@ if(count($_SESSION)>0) {
        if(!isset($_POST["numerodoc"])) die("error numerodoc");
        if(!isset($_POST["telefono"])) die("error telefono");
        if(!isset($_POST["observaciones"])) die("error observaciones");
-       if(!isset($_FILES["fileName"])) die("error archivo");
-     //  if(!isset($_POST["fileName"])) die("error nombre");
+    //   if(!isset($_FILES["fileName"])) die("error archivo");
+    
     
 
     //verifico que lleguen la naturaleza, motivos , sub motivos..
@@ -38,21 +38,23 @@ if(count($_SESSION)>0) {
        if(!isset($_POST["submotivo"])) die("error submotivo");
 
 /////
-     var_dump($_FILES["fileName"]);
+   /*  var_dump($_FILES["fileName"]);
      die($_FILES["fileName"]);
-    
+    */
     
 
       $cliente = new Clientes();
       //busco si existe el cliente
-      $id = $cliente->getID($_POST["numerodoc"]);
+      $numerodoc = intval($_POST["numerodoc"]); 
+    
+      $id = $cliente->getID($numerodoc);
       if(!$id){
         //si no existe lo creo
-        $cliente->CrearCliente($_POST["nomApe"],$_POST["numerodoc"],$_POST["mail"],$_POST["telefono"]);
+        $cliente->CrearCliente($_POST["nomApe"],$numerodoc,$_POST["mail"],$_POST["telefono"]);
       }
 
       //lo busco devuelta y saco el id
-      $id = $cliente->getID($_POST["numerodoc"]);
+      $id = $cliente->getID($numerodoc);
       $id = $id['id_cliente'];
      
       
@@ -67,15 +69,16 @@ if(count($_SESSION)>0) {
         $estado = 0;
       
         
-
-
+      $submotivo = intval($_POST["submotivo"]); 
+      
       $c = new Casos;
-      $c->CrearCaso($_POST["observaciones"], $estado, $_POST["submotivo"], $id ,  $id_usuario);
+      $c->CrearCaso($_POST["observaciones"], $estado, $submotivo, $id ,  $id_usuario);
 
 
 
 
-      die("se cargo");
+      header("Location: ../proyectolaboratorio4/CasosPendientes");
+      exit();
 
       
 
@@ -103,7 +106,7 @@ if(count($_SESSION)>0) {
      
 }
 else{
-  header("Location: ../controllers/ingresousuario.php");
+  header("Location: ../proyectolaboratorio4/Inicio.php");
 exit();
 }
 ?>

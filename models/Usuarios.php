@@ -16,9 +16,13 @@ class Usuarios extends Model {
 		$aux=$this->getTodos();
 	
 		// ver validacion de datos
-
+		// comillas
+		$nombre=$this->db->escape($nombre);
+		$contra=$this->db->escape($contra);
+		// comodines
 		$nombre=$this->db->escapeWildcards($nombre);
 		$contra=$this->db->escapeWildcards($contra);
+		// hashing
 		$contra=$this->AplicarHashing($contra);
 		//var_dump($contra);
 
@@ -43,7 +47,13 @@ class Usuarios extends Model {
 			$aux=$this->getTodos();
 		
 			// ver validacion de datos
-	
+			// comillas
+			$nombre=$this->db->escape($nombre);
+			$contra=$this->db->escape($contra);
+			// comodines
+			$nombre=$this->db->escapeWildcards($nombre);
+			$contra=$this->db->escapeWildcards($contra);
+			// hashing
 			$contra=$this->AplicarHashing($contra);
 			//var_dump($contra);
 	

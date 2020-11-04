@@ -46,6 +46,7 @@ if(count($_SESSION)>0) {
       
       $tabla .="</tr>";
       }*/
+     
    echo (json_encode($u));
        //echo $tabla;
    
@@ -59,7 +60,7 @@ if(count($_SESSION)>0) {
    
    
 }else{
-    header("Location: ../controllers/ingresousuario.php");
+    header("Location: ../proyectolaboratorio4/Inicio.php");
   exit();
   }
 
