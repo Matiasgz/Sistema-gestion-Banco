@@ -16,6 +16,9 @@ class Usuarios extends Model {
 		$aux=$this->getTodos();
 	
 		// ver validacion de datos
+		//consulto
+		if(!is_string($nombre)) throw new ValidacionExceptionUsuarios ("error nombre usuario");
+		if(!is_string($contra)) throw new ValidacionExceptionUsuarios ("error contraseña");
 		// comillas
 		$nombre=$this->db->escape($nombre);
 		$contra=$this->db->escape($contra);
@@ -47,6 +50,9 @@ class Usuarios extends Model {
 			$aux=$this->getTodos();
 		
 			// ver validacion de datos
+			//consulto
+			if(!is_string($nombre)) throw new ValidacionExceptionUsuarios ("error nombre usuario");
+			if(!is_string($contra)) throw new ValidacionExceptionUsuarios ("error contraseña");
 			// comillas
 			$nombre=$this->db->escape($nombre);
 			$contra=$this->db->escape($contra);
@@ -68,5 +74,5 @@ class Usuarios extends Model {
 		
 	}
 
-
+	class ValidacionExceptionUsuarios extends Exception{}
 

@@ -49,4 +49,9 @@ class Database {
 		return $str;
 	}
 
+	public function digit($str) {
+		if(!$this->cn) $this->connect();
+		return ctype_digit($str);
+	}
+
 }

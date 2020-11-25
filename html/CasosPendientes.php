@@ -74,9 +74,7 @@ include("../html/plantilla.php") ?>
 
                       <input type="text" class="form-control" value="<?= $c['mail'] ?>" id="correoIngresado" readonly="readonly">
 
-                      <div class="input-group-append">
-                        <a class="btn btn-outline-primary" onclick="copiar()">Copiar</a>
-                      </div>
+                      
                     </div>
 
                     <div class="input-group mb-3 input-group">
@@ -106,7 +104,7 @@ include("../html/plantilla.php") ?>
                   <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 500px;">
                     <div class="modal-content" style="max-width: 500px;">
 
-                      <form action="../proyectolaboratorio4/CasosPendientes" method="post">
+                      <form action="../Gestion-Banco/CasosPendientes" method="post">
                         <!-- Modal Header -->
                         <div class="modal-header">
                           <h4 class="modal-title">Resolución</h4>

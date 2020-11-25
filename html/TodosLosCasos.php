@@ -75,9 +75,7 @@ include("../html/plantilla.php"); ?>
 
                         <input type="text" class="form-control" value="<?= $c['mail'] ?>" id="correoIngresado" readonly="readonly">
 
-                        <div class="input-group-append">
-                          <a class="btn btn-outline-primary" onclick="copiar()">Copiar</a>
-                        </div>
+                        
                       </div>
 
                       <div class="input-group mb-3 input-group">

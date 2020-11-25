@@ -83,11 +83,7 @@ include("../html/plantilla.php") ?>
     <!--ADVERTENCIA OBSERVACIONES-->
     <div id="adver_textarea" style="color: red"></div>
 
-    <!--SELECCIONAR ARCHIVO-->
-    <div class="custom-file">
-      <input type="file" id="myFile" name="fileName">
-    </div>
-
+  
     <!--BOTONES DERIVAR _ CANCELAR-->
     <button type="button" id="derivar" class="btn btn-outline-primary" style="float: right; margin-left: 10px" data-toggle="modal" data-target="#tagsmodal">Derivar</button>
     <button onclick="cancelar()" type="button" class="btn btn-outline-danger" style="float: right;">Cancelar</button>

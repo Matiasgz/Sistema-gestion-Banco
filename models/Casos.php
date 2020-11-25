@@ -48,10 +48,12 @@ class Casos extends Model {
 
     public function BuscarCaso($palabra){
         //valido
-        $palabra=$this->db->escapeWildcards($palabra);
+        if(!($this->db->digit($palabra))) throw new ValidacionExceptionCasos ('error digit doc');
+        if($palabra <= 0) throw new ValidacionExceptionCasos ('error documento negativo');
+        if(strlen(strval($palabra)) > 8) throw new ValidacionExceptionCasos ("error cantidad de numero doc");
         
         //ORDER BY STR_TO_DATE(datestring, '%d/%m/%Y')
-        $this->db->query("SELECT  ca.descripcion, ca.fecha, ca.estado, cli.nombre_apellido, cli.DNI FROM  casos AS ca, clientes as cli WHERE cli.DNI LIKE '{$palabra}%' and cli.id_cliente = ca.id_cliente ");
+        $this->db->query("SELECT  ca.descripcion, DATE_FORMAT(ca.fecha, '%d/%m/%Y') as fecha, ca.estado, cli.nombre_apellido, cli.DNI FROM  casos AS ca, clientes as cli WHERE cli.DNI LIKE '{$palabra}%' and cli.id_cliente = ca.id_cliente ");
         $aux=$this->db->fetchAll();
         //DATE_FORMAT('2009-10-04 22:23:00', '%W %M %Y')
         //DATE_FORMAT(ca.fecha,'%d/%m/%Y')
@@ -64,11 +66,19 @@ class Casos extends Model {
     public function CrearCaso($descripcion,$estado,$id_submot,$id_cliente,$id_usuario){
 
         //valido
+        //Descripcion
         $descripcion=$this->db->escapeWildcards($descripcion);
         $descripcion=$this->db->escape($descripcion);
-        
-        if(!is_int($id_submot)) die("error submotivo");
-        if($id_submot <= 0) die ("error index submotivo negativo");
+
+        //estado
+        if(!is_numeric($estado)) throw new ValidacionExceptionCasos ('error tipo de estado');
+        if($estado<0 || $estado>1) throw new ValidacionExceptionCasos ('error numero estado');
+
+        //id_submot
+        if(!($this->db->digit($id_submot))) throw new ValidacionExceptionCasos('Error digit submotivo');
+
+        //id
+        if(!($this->db->digit($id_cliente))) throw new ValidacionExceptionCasos('Error digit id');
         
         //hago el insert
         $this->db->query(" INSERT INTO casos (fecha,descripcion,estado,id_submotivo,id_cliente,id_usuario)
@@ -78,8 +88,12 @@ class Casos extends Model {
 
     public function ResolucionPendiente($resolucion,$id_caso){
         //valido
-        $resolucion=$this->db->escapeWildcards($resolucion);
+        //resolucion
         $resolucion=$this->db->escape($resolucion);
+        $resolucion=$this->db->escapeWildcards($resolucion);
+
+        //id_caso
+        if(!($this->db->digit($id_caso))) throw new ValidacionExceptionCasos('Error digit id_caso');
 
         //hago el update
         $this->db->query("UPDATE casos
@@ -90,5 +104,8 @@ class Casos extends Model {
 
     }
 
+    
    
 }
+
+class ValidacionExceptionCasos extends Exception{}

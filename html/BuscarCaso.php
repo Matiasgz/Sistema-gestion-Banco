@@ -49,7 +49,7 @@ $controlador = "BuscarCaso";
                   Table.innerHTML = ""; 
               $.ajax({
                     data:  parametros,
-                    url: '../proyectolaboratorio4/BuscarCasos',
+                    url: '../Gestion-Banco/BuscarCasos',
                     type:'post',
                     beforeSend: function () { },
                     success:  function (response) {   

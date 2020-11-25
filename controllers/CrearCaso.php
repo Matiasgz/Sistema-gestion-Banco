@@ -45,7 +45,7 @@ if(count($_SESSION)>0) {
 
       $cliente = new Clientes();
       //busco si existe el cliente
-      $numerodoc = intval($_POST["numerodoc"]); 
+      $numerodoc = $_POST["numerodoc"];
     
       $id = $cliente->getID($numerodoc);
       if(!$id){
@@ -63,13 +63,13 @@ if(count($_SESSION)>0) {
 
      
 
-      if($_POST["naturaleza"]!= "Asesoramiento")
+      if($_POST["naturaleza"]==1)
         $estado = 1;
       else
         $estado = 0;
       
         
-      $submotivo = intval($_POST["submotivo"]); 
+      $submotivo = $_POST["submotivo"];  
       
       $c = new Casos;
       $c->CrearCaso($_POST["observaciones"], $estado, $submotivo, $id ,  $id_usuario);

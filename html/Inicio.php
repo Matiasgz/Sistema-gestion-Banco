@@ -15,7 +15,7 @@ include("../html/plantilla.php") ?>
         <tr>
           <th>Fecha</th>
           <th>Informacion</th>
-          <th><input class="form-control" id="buscador" type="text" placeholder="Buscar informacion..."></th>
+         
         </tr>
       </thead>
 
@@ -27,8 +27,7 @@ include("../html/plantilla.php") ?>
           <tr>
             <td><?= $caso['fecha'] ?></td>
             <td><?= $caso['descripcion'] ?></td>
-            <td><a href="#" style="text-decoration: none;">Ver mas...</a></td>
-          </tr>
+           
         <?php } ?>
 
       </tbody>
