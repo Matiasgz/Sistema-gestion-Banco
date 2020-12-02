@@ -36,9 +36,7 @@
         </div>
           
         <div class="form-group form-check">
-            <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="remember"> Recordar usuario
-            </label>
+          
 
           <br>
           <button type="submit" class="btn btn-sm btn-success" id="Submit">Ingresar</button>

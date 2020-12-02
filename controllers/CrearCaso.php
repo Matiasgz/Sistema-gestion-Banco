@@ -64,9 +64,9 @@ if(count($_SESSION)>0) {
      
 
       if($_POST["naturaleza"]==1)
-        $estado = 1;
+        $estado = '1';
       else
-        $estado = 0;
+        $estado = '0';
       
         
       $submotivo = $_POST["submotivo"];  
