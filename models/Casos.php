@@ -46,19 +46,19 @@ class Casos extends Model {
 
     }
 
-    public function BuscarCaso($palabra){
+    public function BuscarCaso($doc){
         //valido
-        if(!($this->db->digit($palabra))) throw new ValidacionExceptionCasos ('error digit doc');
-        if($palabra <= 0) throw new ValidacionExceptionCasos ('error documento negativo');
-        if(strlen(strval($palabra)) > 8) throw new ValidacionExceptionCasos ("error cantidad de numero doc");
-        
-        //ORDER BY STR_TO_DATE(datestring, '%d/%m/%Y')
-        $this->db->query("SELECT  ca.descripcion, DATE_FORMAT(ca.fecha, '%d/%m/%Y') as fecha, ca.estado, cli.nombre_apellido, cli.DNI FROM  casos AS ca, clientes as cli WHERE cli.DNI LIKE '{$palabra}%' and cli.id_cliente = ca.id_cliente ");
+        if(!($this->db->digit($doc))) throw new ValidacionExceptionCasos ('error digit doc');
+        if($doc <= 0) throw new ValidacionExceptionCasos ('error documento negativo');
+        if(strlen(strval($doc)) > 8) throw new ValidacionExceptionCasos ("error cantidad de numero doc");
+        $doc=$this->db->escape($doc);
+        $doc=$this->db->escapeWildcards($doc);
+       
+
+
+        $this->db->query("SELECT  ca.descripcion, DATE_FORMAT(ca.fecha, '%d/%m/%Y') as fecha, ca.estado, cli.nombre_apellido, cli.DNI FROM  casos AS ca, clientes as cli WHERE cli.DNI LIKE '{$doc}%' and cli.id_cliente = ca.id_cliente ");
         $aux=$this->db->fetchAll();
-        //DATE_FORMAT('2009-10-04 22:23:00', '%W %M %Y')
-        //DATE_FORMAT(ca.fecha,'%d/%m/%Y')
-        //DATE_FORMAT(ca.fecha, "%d/%l/%Y %H:%i:%s")
-        //ORDER BY STR_TO_DATE(datestring, '%d/%m/%Y')
+       
         return $aux;
 
     }
@@ -66,17 +66,22 @@ class Casos extends Model {
     public function CrearCaso($descripcion,$estado,$id_submot,$id_cliente,$id_usuario){
 
         //valido
-        //Descripcion
-        $descripcion=$this->db->escapeWildcards($descripcion);
+        //Descripcion        
         $descripcion=$this->db->escape($descripcion);
-
+        if(strlen($descripcion) < 1 ) throw new ValidacionExceptionCasos ('error no hay caracteres'); 
+        $descripcion = substr($descripcion,0,50);
+        
         //estado
-        if(!is_numeric($estado)) throw new ValidacionExceptionCasos ('error tipo de estado');
+       // if(!is_numeric($estado)) throw new ValidacionExceptionCasos ('error tipo de estado');
         if($estado<0 || $estado>1) throw new ValidacionExceptionCasos ('error numero estado');
 
         //id_submot
         if(!($this->db->digit($id_submot))) throw new ValidacionExceptionCasos('Error digit submotivo');
-
+        if($id_submot < 0) throw new ValidacionExceptionCasos('Error  submotivo negativo');
+        $aux = $this->db->query("SELECT * FROM submotivo where id_submotivo = $id_submot LIMIT 1");
+        $cont = $this->db->numRows();
+        if($cont != 1)throw new ValidacionExceptionCasos('Error submotivo inexistente');
+        
         //id
         if(!($this->db->digit($id_cliente))) throw new ValidacionExceptionCasos('Error digit id');
         
@@ -90,7 +95,8 @@ class Casos extends Model {
         //valido
         //resolucion
         $resolucion=$this->db->escape($resolucion);
-        $resolucion=$this->db->escapeWildcards($resolucion);
+        if(strlen($resolucion) < 1 ) throw new ValidacionExceptionCasos ('error no hay caracteres'); 
+        $resolucion = substr($resolucion,0,50);
 
         //id_caso
         if(!($this->db->digit($id_caso))) throw new ValidacionExceptionCasos('Error digit id_caso');

@@ -16,7 +16,7 @@ class Clientes extends Model {
         //$doc=$this->db->escapeWildcards($doc);
         if(!($this->db->digit($doc))) throw new ValidacionExceptionClientes ('error digit doc');
         if($doc <= 0) throw new ValidacionExceptionClientes ('error documento negativo');
-        if(strlen(strval($doc)) > 8) throw new ValidacionExceptionClientes ("error cantidad de numero doc");
+        if(strlen(strval($doc)) > 8 ) throw new ValidacionExceptionClientes ("error cantidad de numero doc");
 
         //busco
         $this->db->query("SELECT id_cliente FROM  clientes  WHERE  DNI = $doc ");
@@ -31,17 +31,21 @@ class Clientes extends Model {
         //hago las validacion
         //nomape
         $nomApe=$this->db->escape($nomApe);
-        $nomApe=$this->db->escapeWildcards($nomApe);
         if(!is_string($nomApe)) throw new ValidacionExceptionClientes ("error nombre no string");
+        $nomApe = substr($nomApe,0,50);
+
+        //doc
+        if(!($this->db->digit($doc))) throw new ValidacionExceptionClientes ('error digit doc');
+        if($doc <= 0) throw new ValidacionExceptionClientes ('error documento negativo');
+        if(strlen(strval($doc)) > 8 ) throw new ValidacionExceptionClientes ("error cantidad de numero doc");
 
         //mail
         $mail=$this->db->escape($mail);
-        $mail=$this->db->escapeWildcards($mail);
         $mail = filter_var( $mail, FILTER_SANITIZE_STRING);
         if(filter_var($mail, FILTER_VALIDATE_EMAIL)== false) throw new ValidacionExceptionClientes ("error mail no valido");
 
         //tel
-        if(!($this->db->digit($doc))) throw new ValidacionExceptionClientes ('error digit tel');
+        if(!($this->db->digit($tel))) throw new ValidacionExceptionClientes ('error digit tel');
         if ( (strlen($tel) > 15 )  || (strlen($tel) < 10 ) ) throw new ValidacionExceptionClientes ("error cantidad de numero telefono");
                 
 
