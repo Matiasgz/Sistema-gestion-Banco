@@ -67,10 +67,11 @@ class Casos extends Model {
 
         //valido
         //Descripcion        
-        $descripcion=$this->db->escape($descripcion);
+        
         if(strlen($descripcion) < 1 ) throw new ValidacionExceptionCasos ('error no hay caracteres'); 
         $descripcion = substr($descripcion,0,50);
-        
+        $descripcion=$this->db->escape($descripcion);
+
         //estado
        // if(!is_numeric($estado)) throw new ValidacionExceptionCasos ('error tipo de estado');
         if($estado<0 || $estado>1) throw new ValidacionExceptionCasos ('error numero estado');
@@ -94,10 +95,12 @@ class Casos extends Model {
     public function ResolucionPendiente($resolucion,$id_caso){
         //valido
         //resolucion
-        $resolucion=$this->db->escape($resolucion);
+  
         if(strlen($resolucion) < 1 ) throw new ValidacionExceptionCasos ('error no hay caracteres'); 
         $resolucion = substr($resolucion,0,50);
+        $resolucion=$this->db->escape($resolucion);
 
+        
         //id_caso
         if(!($this->db->digit($id_caso))) throw new ValidacionExceptionCasos('Error digit id_caso');
 

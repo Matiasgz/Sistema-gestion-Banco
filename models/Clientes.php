@@ -30,9 +30,10 @@ class Clientes extends Model {
     public function CrearCliente($nomApe, $doc, $mail, $tel){
         //hago las validacion
         //nomape
-        $nomApe=$this->db->escape($nomApe);
+        
         if(!is_string($nomApe)) throw new ValidacionExceptionClientes ("error nombre no string");
         $nomApe = substr($nomApe,0,50);
+        $nomApe=$this->db->escape($nomApe);
 
         //doc
         if(!($this->db->digit($doc))) throw new ValidacionExceptionClientes ('error digit doc');
@@ -40,9 +41,10 @@ class Clientes extends Model {
         if(strlen(strval($doc)) > 8 ) throw new ValidacionExceptionClientes ("error cantidad de numero doc");
 
         //mail
-        $mail=$this->db->escape($mail);
+        
         $mail = filter_var( $mail, FILTER_SANITIZE_STRING);
         if(filter_var($mail, FILTER_VALIDATE_EMAIL)== false) throw new ValidacionExceptionClientes ("error mail no valido");
+        $mail=$this->db->escape($mail);
 
         //tel
         if(!($this->db->digit($tel))) throw new ValidacionExceptionClientes ('error digit tel');
